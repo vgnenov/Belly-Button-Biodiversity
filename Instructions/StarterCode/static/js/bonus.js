@@ -1,3 +1,21 @@
+// var wfreq = data.metadata.map(d => d.wfreq)
+// var samples = data.samples.filter(s => s.id.toString() === id)[0];  
+
+// var gauge = [
+// 	{
+// 		domain: { x: [0, 1], y: [0, 1] },
+// 		value: samples,
+// 		title: { text: "Speed" },
+// 		type: "indicator",
+// 		mode: "gauge+number"
+// 	}
+// ];
+
+// var layout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+// Plotly.newPlot('gauge', gauge, layout);
+
+
+
 var trace1 = {
     x: [1, 2, 3, 4],
     y: [10, 15, 13, 17],
@@ -19,6 +37,6 @@ var trace1 = {
     type: 'scatter'
   };
   
-  var data = [trace1, trace2, trace3];
+  var gauge = [trace1, trace2, trace3];
   
-  Plotly.newPlot('myDiv', data);
+  Plotly.newPlot('myDiv', gauge);

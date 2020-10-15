@@ -1,4 +1,5 @@
-// create the function that gets the data and creates the plots for the id 
+// use Live server VS Code extension to in browser
+//workaround instead of using server
 
 function getPlot(id) {
     
@@ -104,7 +105,7 @@ function getPlot(id) {
         // var data = [tracePie]
      
      
-     Plotly.newPlot("gauge", data)
+    //  Plotly.newPlot("gauge", data)
 
  });      
 }
