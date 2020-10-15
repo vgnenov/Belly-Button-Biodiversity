@@ -6,6 +6,8 @@ function getPlot(id) {
     d3.json("samples.json").then((data)=> {
         console.log(data)
 
+        // var names = data.metadata.map(d => d.names)
+      
         var wfreq = data.metadata.map(d => d.wfreq)
         console.log(`Washing Freq: ${wfreq}`)
 
@@ -89,19 +91,22 @@ function getPlot(id) {
         // create the bubble plot
         Plotly.newPlot("bubble", data1, layout); 
 
-        // create pie chart
-        var tracePie = {
-            labels: idOtu,
-            values:sampleValues,
-            type:"pie",
-        }
+         // create the bubble plot
+        Plotly.newPlot("bubble", data1, layout); 
 
-        var data = [tracePie]
-        
-        
-        Plotly.newPlot("gauge", data)
+        // // create pie chart
+        // var tracePie = {
+        //      labels: idOtu,
+        //      values:sampleValues,
+        //      type:"pie",
+        //  }
 
-    });    
+        // var data = [tracePie]
+     
+     
+     Plotly.newPlot("gauge", data)
+
+ });      
 }
     
 // create the function to get the necessary data
@@ -154,6 +159,7 @@ function init() {
         getPlot(data.names[0]);
         getInfo(data.names[0]);
     });
+    
 }
 
 init();
