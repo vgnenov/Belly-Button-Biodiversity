@@ -15,7 +15,6 @@ function getPlot(id) {
         // var idOtu = idValues.map(d => "OTU " + d)
         // var labels = samples.otu_labels.slice(0, 10);
         var samples = data.samples.filter(s => s.id.toString() === id)[0];
-
         console.log(samples);
 
         // var wfreq = data.wfreq.filter(s => s.wfreq.toString() === wfreq)[0];
@@ -142,37 +141,69 @@ function getPlot(id) {
         //   Plotly.newPlot('myDiv', data, layout);
 
 
+
+
+
+
+
+
         // creating gauge graph
-        var traceGauge = {
-             title: "Belly Button Scrubs per Week",
-             labels: idValues,
-             values: samples,
-             type:"indicator",
-             mode: "gauge+number+delta",
-             delta: {refrence: 400},
-             gauge: {
-                 steps: [
-                     {range: [0, 100], color: "gray"},
-                     {range: [0, 250], color: "lightgray"}
-                 ],
-                 threshold: {
-                     line: {color: "red", width: 4 },
-                     thickness: 0.75,
-                     value: 550
-                 }
-             }
+        // var traceGauge = {
+        //      title: "Belly Button Scrubs per Week",
+        //      labels: idValues,
+        //      values: wfreq,
+        //      type:"indicator",
+        //      mode: "gauge+number+delta",
+        //      delta: {refrence: 400},
+        //      gauge: {
+        //          steps: [
+        //              {range: [1, 100], color: "gray"},
+        //              {range: [1, 250], color: "lightgray"}
+        //          ],
+        //          threshold: {
+        //              line: {color: "red", width: 4 },
+        //              thickness: 0.75,
+        //              value: 550
+        //          }
+        //      }
 
-         };
-         var layout = { width: 600, height: 400, margin: {t: 0, b:0 } };
+        //  };
+        //  var layout = { width: 600, height: 400, margin: {t: 0, b:0 } };
 
-        var data = [traceGauge]
-     
+        // var traceGauge = [
+        //     {
+        //         domain: { x: [0, 1], y: [0, 1] },
+        //         value: wfreq,
+        //         title: { text: "Speed" },
+        //         type: "indicator",
+        //         mode: "gauge+number"
+        //     }
+        // ];
+        
+        // var layout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+        // Plotly.newPlot('myDiv', data, layout);
+
+
+        var data = [
+            {
+            //   domain: { x: [0, 1], y: [0, 1] },
+              value: 3,
+              title: { text: "Washings" },
+              type: "indicator",
+              mode: "gauge+number",
+              delta: { reference: 10 },
+              gauge: { axis: { range: [0, 10] } }
+            }
+          ];
+          
+          var layout = { width: 600, height: 400 };
+          Plotly.newPlot('gauge', data, layout);
      
      Plotly.newPlot("gauge", data, layout)
 
  });      
 }
-    
+
 // create the function to get the necessary data
 function getInfo(id) {
     // read the json file to get data
@@ -227,3 +258,69 @@ function init() {
 }
 
 init();
+
+// function buildGauge(wfreq) {
+//     d3.json("samples.json").then((data)=> {
+//         console.log(data) }
+
+//     var data = [
+//         {
+//             domain: { x: [0, 1], y: [0, 1] },
+//             value: 270,
+//             title: { text: "Speed" },
+//             type: "indicator",
+//             mode: "gauge+number"
+//         }
+//     ];
+    
+//     var layout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+//     Plotly.newPlot('myDiv', data, layout);
+
+//     }
+//     {
+//     let GAUGE = document.getElementById("gauge");
+//     Plotly.newPlot(GAUGE, data, layout);
+// }
+
+// var wfreq = data.metadata.map(d => d.wfreq)
+// // var samples = data.samples.filter(s => s.id.toString() === id)[0];  
+
+// // var gauge = [
+// // 	{
+// // 		domain: { x: [0, 1], y: [0, 1] },
+// // 		value: samples,
+// // 		title: { text: "Speed" },
+// // 		type: "indicator",
+// // 		mode: "gauge+number"
+// // 	}
+// // ];
+
+// // var layout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+// // Plotly.newPlot('gauge', gauge, layout);
+
+
+
+// var trace1 = {
+//     x: [1, 2, 3, 4],
+//     y: [10, 15, 13, 17],
+//     mode: 'markers',
+//     type: 'scatter'
+//   };
+  
+//   var trace2 = {
+//     x: [2, 3, 4, 5],
+//     y: [16, 5, 11, 9],
+//     mode: 'lines',
+//     type: 'scatter'
+//   };
+  
+//   var trace3 = {
+//     x: [1, 2, 3, 4],
+//     y: [12, 9, 15, 12],
+//     mode: 'lines+markers',
+//     type: 'scatter'
+//   };
+  
+//   var gauge = [trace1, trace2, trace3];
+  
+//   Plotly.newPlot('myDiv', gauge);
