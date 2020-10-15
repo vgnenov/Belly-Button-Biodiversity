@@ -1,5 +1,5 @@
 // use Live server VS Code extension to in browser
-//workaround instead of using server
+//workaround instead of
 
 function getPlot(id) {
     
@@ -81,6 +81,7 @@ function getPlot(id) {
 
         // set the layout for the bubble plot
         var layout = {
+            title: "Bubble Plot",
             xaxis:{title: "OTU ID"},
             height: 600,
             width: 1300
@@ -95,17 +96,50 @@ function getPlot(id) {
          // create the bubble plot
         Plotly.newPlot("bubble", data1, layout); 
 
-        // // create pie chart
-        // var tracePie = {
-        //      labels: idOtu,
-        //      values:sampleValues,
-        //      type:"pie",
-        //  }
+        //creating gauge graph
+        // var tracePie = [
+        //     {
+        //       domain: { x: [0, 1], y: [0, 1] },
+        //       value: 450,
+        //       title: { text: "Speed" },
+        //       type: "indicator",
+        //       mode: "gauge+number",
+        //       delta: { reference: 400 },
+        //       gauge: { axis: { range: [null, 500] } }
+        //     }
+        //   ];
+          
+        //   var layout = { width: 600, height: 400 };
+        //   Plotly.newPlot('myDiv', data, layout);
 
-        // var data = [tracePie]
+
+        // create gauge graph
+        var traceGauge = {
+            title: "Belly Button Scrubs per Week",
+             labels: samples,
+             values: wfreq,
+             type:"indicator",
+             mode: "gauge+number",
+             delta: {refrence: 400},
+             gauge: {
+                 steps: [
+                     {range: [0, 100], color: "gray"},
+                     {range: [0, 250], color: "lightgray"}
+                 ],
+                 threshold: {
+                     line: {color: "red", width: 4 },
+                     thickness: 0.75,
+                     value: 550
+                 }
+             }
+
+         };
+         var layout = { width: 600, height: 400, margin: {t: 0, b:0 } };
+
+        var data = [traceGauge]
      
      
-    //  Plotly.newPlot("gauge", data)
+     Plotly.newPlot("gauge", data, layout)
 
  });      
 }
