@@ -12,12 +12,16 @@ function getPlot(id) {
         var wfreq = data.metadata.map(d => d.wfreq)
         console.log(`Washing Freq: ${wfreq}`)
 
-        // filter sample values by id 
+        // var idOtu = idValues.map(d => "OTU " + d)
+        // var labels = samples.otu_labels.slice(0, 10);
         var samples = data.samples.filter(s => s.id.toString() === id)[0];
 
         console.log(samples);
 
-        // get only top 10 sample values to plot and reverse for the plotly
+        // var wfreq = data.wfreq.filter(s => s.wfreq.toString() === wfreq)[0];
+        // console.log(wfreq);
+
+        // var idValues = (samples.otu_ids.slice(0, 10)).reverse();
         var sampleValues = samples.sample_values.slice(0, 10).reverse();
 
         // get only top 10 otu ids for the plot
@@ -34,8 +38,33 @@ function getPlot(id) {
         console.log(`Sample Values: ${sampleValues}`)
         console.log(`Id Values: ${idValues}`)
 
+       
+//     function optionChanged(id) {
+//         getPlot(id);
+//         getInfo(id);
+// }
+
+// // create the function for the initial data rendering
+// function init() {
+//     // select dropdown menu 
+//     var dropdown = d3.select("#selDataset");
+
+//     // read the data 
+//     d3.json("samples.json").then((data)=> {
+//         console.log(data)
+
+//         // get the id data to the dropdwown menu
+//         data.names.forEach(function(name) {
+//             dropdown.append("option").text(name).property("value");
+//         });
+
+//         // call the functions to display the data and the plots to the page
+//         getPlot(data.names[0]);
+//         getInfo(data.names[0]);
+//     });
+
         
-        // create trace variable for the plot
+        // trace for bar graph
         var trace = {
             x: sampleValues,
             y: idOtu,
@@ -44,7 +73,7 @@ function getPlot(id) {
             orientation: "h",
         };
 
-        // create data variable
+        //data variable
         var data = [trace];
 
         // create layout variable to set plots layout
@@ -54,19 +83,19 @@ function getPlot(id) {
                 tickmode:"linear",
             },
             margin: {
-                l: 100,
-                r: 100,
-                t: 30,
-                b: 20
+                l: 200,
+                r: 150,
+                t: 45,
+                b: 25
             }
         };
 
-        // create the bar plot
+        // Bar Plot
         Plotly.newPlot("bar", data, layout);
 
         //console.log(`ID: ${samples.otu_ids}`)
         
-        // create the trace for the bubble chart
+        // Bubble Chart Trace
         var trace1 = {
             x: samples.otu_ids,
             y: samples.sample_values,
@@ -79,7 +108,7 @@ function getPlot(id) {
 
         };
 
-        // set the layout for the bubble plot
+        // Bubbl plot layout
         var layout = {
             title: "Bubble Plot",
             xaxis:{title: "OTU ID"},
@@ -87,14 +116,14 @@ function getPlot(id) {
             width: 1300
         };
 
-        // create the data variable 
+        // Data variable
         var data1 = [trace1];
 
-        // create the bubble plot
+        // Bubble plot
         Plotly.newPlot("bubble", data1, layout); 
 
-         // create the bubble plot
-        Plotly.newPlot("bubble", data1, layout); 
+        //  // create the bubble plot
+        // Plotly.newPlot("bubble", data1, layout); 
 
         //creating gauge graph
         // var tracePie = [
@@ -113,13 +142,13 @@ function getPlot(id) {
         //   Plotly.newPlot('myDiv', data, layout);
 
 
-        // create gauge graph
+        // creating gauge graph
         var traceGauge = {
-            title: "Belly Button Scrubs per Week",
-             labels: samples,
-             values: wfreq,
+             title: "Belly Button Scrubs per Week",
+             labels: idValues,
+             values: samples,
              type:"indicator",
-             mode: "gauge+number",
+             mode: "gauge+number+delta",
              delta: {refrence: 400},
              gauge: {
                  steps: [
