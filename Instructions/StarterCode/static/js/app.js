@@ -1,5 +1,5 @@
-// use Live server VS Code extension to in browser
-//workaround instead of
+// Live Server VS Code extension per Jays video on Slack to view
+//charts in real time
 
 function getPlot(id) {
     
