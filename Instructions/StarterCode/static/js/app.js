@@ -3,7 +3,7 @@
 
 function getPlot(id) {
     
-    // get the data from the json file
+    // import data
     d3.json("samples.json").then((data)=> {
         console.log(data)
 
@@ -23,7 +23,7 @@ function getPlot(id) {
         // var idValues = (samples.otu_ids.slice(0, 10)).reverse();
         var sampleValues = samples.sample_values.slice(0, 10).reverse();
 
-        // get only top 10 otu ids for the plot
+        // only top 10 bacteria
         var idValues = (samples.otu_ids.slice(0, 10)).reverse();
         
         // get the otu id's to the desired form for the plot
@@ -31,7 +31,7 @@ function getPlot(id) {
 
         console.log(`OTU IDS: ${idOtu}`)
 
-        // get the top 10 labels for the plot
+        // top 10 labels
         var labels = samples.otu_labels.slice(0, 10);
 
         console.log(`Sample Values: ${sampleValues}`)
@@ -63,7 +63,7 @@ function getPlot(id) {
 //     });
 
         
-        // trace for bar graph
+        // trace bar graph
         var trace = {
             x: sampleValues,
             y: idOtu,
@@ -115,10 +115,9 @@ function getPlot(id) {
             width: 1300
         };
 
-        // Data variable
+        
         var data1 = [trace1];
-
-        // Bubble plot
+      
         Plotly.newPlot("bubble", data1, layout); 
 
         //  // create the bubble plot
@@ -186,8 +185,8 @@ function getPlot(id) {
 
         var data = [
             {
-            //   domain: { x: [0, 1], y: [0, 1] },
-              value: 3,
+              domain: { x: [0,1], y: [0, 1] },
+              value: 2,
               title: { text: "Washings" },
               type: "indicator",
               mode: "gauge+number",
@@ -206,7 +205,7 @@ function getPlot(id) {
 
 // create the function to get the necessary data
 function getInfo(id) {
-    // read the json file to get data
+    // import json file
     d3.json("samples.json").then((data)=> {
         
         // get the metadata info for the demographic panel
@@ -241,16 +240,16 @@ function init() {
     // select dropdown menu 
     var dropdown = d3.select("#selDataset");
 
-    // read the data 
+    
     d3.json("samples.json").then((data)=> {
         console.log(data)
 
-        // get the id data to the dropdwown menu
+        //drop down menu
         data.names.forEach(function(name) {
             dropdown.append("option").text(name).property("value");
         });
 
-        // call the functions to display the data and the plots to the page
+        // display data
         getPlot(data.names[0]);
         getInfo(data.names[0]);
     });
