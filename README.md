@@ -21,6 +21,7 @@ Using the D3 library we'll read in samples.json.  Using a horizontal bar chart w
 - ![Screenshot](Instructions/Images/jsondata.JPG "Screenshot")
 
 ## Results
+The Interative Belly Button Biodiversity Dashboard updates the graphs whenever a new sample is selected from the Test Subject ID menu on the left of the webpage.
 
-- - ![Screenshot](Instructions/Images/BellyButtonOTU.JPG "Screenshot")
+- ![Screenshot](Instructions/Images/BellyButtonOTU.JPG "Screenshot")
 
