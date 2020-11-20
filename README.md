@@ -25,3 +25,5 @@ The Interative Belly Button Biodiversity Dashboard updates the graphs whenever a
 
 - ![Screenshot](Instructions/Images/BellyButtonOTU.JPG "Screenshot")
 
+Note: Due to compatibility issues on some systems please run html files in Live Server
+
