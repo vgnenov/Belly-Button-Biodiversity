@@ -19,3 +19,8 @@ Using the D3 library we'll read in samples.json.  Using a horizontal bar chart w
 ### Steps 3 and 4 - Displaying the same metadata and each key-value pair from the metadata JSON object
 
 - ![Screenshot](Instructions/Images/jsondata.JPG "Screenshot")
+
+## Results
+
+- - ![Screenshot](Instructions/Images/BellyButtonOTU.JPG "Screenshot")
+
