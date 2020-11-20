@@ -1,3 +1,3 @@
 # Belly Button Biodiversity 
 
-![Screenshot](Instructions/images/bacteria.jpg "Screenshot")
+![Screenshot](Instructions/Images/bacteria.jpg "Screenshot")
