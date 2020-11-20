@@ -12,3 +12,10 @@ Build an interactive dashboard to explore the Belly Button Biodiversity dataset,
 
 Using the D3 library we'll read in samples.json.  Using a horizontal bar chart with a dropdown menu to display the top 10 OTUs found in the individual.
  - ![Screenshot](Instructions/Images/D3Code.JPG "Screenshot")
+
+ ### Step 2 - Create a Bubble Chart that displays each sample
+ - ![Screenshot](Instructions/Images/bubble.JPG "Screenshot")
+
+### Steps 3 and 4 - Displaying the same metadata and each key-value pair from the metadata JSON object
+
+- ![Screenshot](Instructions/Images/jsondata.JPG "Screenshot")
